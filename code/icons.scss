@@ -1,0 +1,65 @@
+// Used this mixin to create a reference to predefined font icons for map display
+
+ $ico-size: 18; // set icon size
+
+$types: "word", "ppt", "xls", "txt", "pdf", "img", "vid", "other" ; // you can add other types as needed
+
+$icolors: ( // you can add other colors as needed. be sure to add the types also
+	"word": #007fff,
+	"ppt": #ffbf00,
+	"xls": #008000,
+	"pdf": #e32636,
+	"txt": #5F9EA0,
+	"img": #9966cc,
+	"vid": #5d8aa8,
+	"other": #cb4154
+);
+
+@function icolor($key) {
+  @return map-get($icolors, $key);
+}
+
+
+@mixin ico-color-sq () {  
+	@each $type in $types {
+		#{".ico-" + $type} {
+			background-color: icolor($type);
+		} 
+	}
+}
+@mixin ico-color-rd () {  
+	@each $type in $types {
+		#{".ico-" + $type} {
+			color: icolor($type);
+		} 
+	}
+}
+
+
+.mi-container {
+	display: inline-block;
+	font-size: #{$ico-size + "px"};
+	padding: 0px;
+	line-height: #{$ico-size + "px"}; 
+	.mdi {
+		color: #fff;
+	}
+	&.sq {
+		@include ico-color-sq();
+		.mdi {
+			// border: solid 2px yellow;
+			
+			@include box-shadow(2px,2px,2px,#bcbcbc); 
+			@include rounded(2px);
+		}
+	}
+	&.rd {
+		@include ico-color-rd();
+		background-color: #fff;
+		.mdi {
+			// border: solid 2px yellow;
+			@include box-shadow(2px,2px,2px,#bcbcbc); 
+			@include rounded(2px);
+		}	
+	}
+}

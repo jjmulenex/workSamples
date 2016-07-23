@@ -1,0 +1,142 @@
+#conflation {
+  height: calc(100vh - 23px);
+  background-color: #F1F3FA;
+  @include display(flex);
+  @include flex-direction(column);
+  .close {
+    top: 6px;
+  }
+  .conflationHeader, .conflationContent, .conflationFooter {
+
+  }
+  .conflationHeader {
+    height: 46px;
+  }
+  .conflationContent {
+    @include flex(1);
+    @include display(flex);
+    @include flex-direction(column);
+    overflow: auto; 
+    .conflationRow {
+      margin: 20px;
+      height: 0;
+      min-height: 0;
+      & > div {
+        margin-right: 20px;
+        margin-bottom: 0px;
+        &:last-child {
+          margin-right: 0;
+        }
+
+      }
+      .settingsForm {
+        overflow: inherit !important;
+      }
+      .portlet.light {
+        @include display(flex);
+        @include flex-direction(column); 
+        min-width: 1px;
+        & > .portlet-title {
+          min-height: 43px;
+          margin-bottom: 0px;
+          .caption {
+            font-size: 14px;
+          }
+        }
+        & > .portlet-body {
+          @include flex(1);
+          padding: 0 !important;
+          overflow: auto; 
+          padding-bottom: 20px;
+          margin: 6px 0 ;
+        }
+        & > .portlet-footer {
+          border-top: 1px solid #e1e1e1;
+          padding-top: 8px;
+          .prox {
+            padding-left: 0px;
+          }
+          .numbers {
+            color: orangered;
+          }
+        }
+      }
+      &.row1 {
+        @include flex(2); 
+        flex-shrink: 0;
+        flex-basis: auto;
+        @include display(flex);
+        margin-bottom: 0;
+        overflow: hidden;
+        .buildCont {
+          @include flex(3);
+          overflow: hidden;
+          & > .portlet-body {
+            overflow: hidden;
+            @include display(flex);
+          
+          }
+        }
+        .finalCont {
+          @include flex(1);
+          & > .portlet-body {
+            overflow: hidden;
+            @include display(flex);
+           
+          }
+        }
+      }
+      &.row2 {
+        @include flex(1);
+        flex-shrink:0;
+        flex-basis: auto;
+        @include display(flex);
+        overflow: hidden;
+        .queueCont {
+          @include flex(4);
+          table {
+            margin-bottom: 0;
+            border-color: #ffffff !important;
+            tr {
+              & > td, & > th {
+                padding: 2px 0px 2px 2px;
+              }
+              th {
+                margin: 0px 0px 0px 4px;
+                padding: 0;
+                font-weight: 800;
+                &.class {
+                  padding: 2px;
+                }
+                &.status {
+                  padding-left: 8px;
+                } 
+              }
+              td {
+                &.classification {
+                  width: 10px;
+                  padding: 0;
+                }
+                &.status {
+                  padding-left: 6px;
+                }
+              }
+            }
+          }
+        }
+        .rdfCont {
+          @include flex(6);
+        }
+        .miniMapCont {
+          @include flex(6);
+        }
+      }
+
+      
+    }
+  }
+  .conflationFooter {
+    height: 33px;
+    background-color: #28303b;
+  }
+}
